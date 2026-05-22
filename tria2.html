@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ APEX v6.0 | 體能指揮官戰術主控台</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>⚡ APEX v6.1 | 體能指揮官戰術主控台</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@3.4.15"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -16,11 +16,11 @@
 
     <div id="pr-alert-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center hidden p-4">
         <div class="bg-gradient-to-b from-slate-900 to-emerald-950 border-2 border-emerald-500 p-8 rounded-3xl max-w-md w-full text-center shadow-2xl shadow-emerald-500/20">
-            <span class="text-5xl block mb-3 animate-bounce">🚀</span>
+            <span class="text-5xl block mb-3 (animation-bounce)">🚀</span>
             <h3 class="text-xl font-black text-emerald-400 tracking-wider uppercase mb-1">相對力量強度突破！</h3>
             <p class="text-xs text-cyan-400 font-mono mb-4">RELATIVE STRENGTH APEX REACHED</p>
             <p id="pr-alert-text" class="text-sm text-slate-200 leading-relaxed mb-6">你的每公斤體重瓦特輸出已達生涯頂峰！這是極佳的攀岩破級預兆，指力與核心適應正在瘋狂進化！</p>
-            <button onclick="closePRModal()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs py-2.5 rounded-xl transition-all cursor-pointer tracking-widest uppercase">
+            <button onclick="closePRModal()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs py-2.5 rounded-xl transition-all cursor-pointer tracking-widest uppercase">
                 支撐新極限，收到！
             </button>
         </div>
@@ -30,7 +30,7 @@
         <div class="w-full px-6 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3">
                 <span class="text-2xl">⚡</span>
-                <h1 class="text-lg font-black tracking-widest text-emerald-400">APEX COMMAND INTERFACE v6.0</h1>
+                <h1 class="text-lg font-black tracking-widest text-emerald-400">APEX COMMAND INTERFACE v6.1</h1>
             </div>
             
             <div class="flex flex-wrap items-center gap-4">
@@ -44,7 +44,7 @@
                 </div>
                 <div class="text-right bg-slate-950 px-4 py-1 rounded-xl border border-slate-800">
                     <span class="text-[9px] text-slate-500 block font-mono">HABIT STREAK</span>
-                    <span id="streak-display" class="text-xs font-black text-amber-400">🔥 0 天</span>
+                    <span id="streak-display" class="text-xs font-bold text-amber-400">🔥 0 天</span>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
             <div class="xl:col-span-2 bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-xl flex flex-col justify-between">
                 <div>
                     <div class="flex justify-between items-end mb-2">
-                        <h2 class="text-xs font-black tracking-widest text-slate-400 uppercase">🏆 總進化進度 (目標 73.0 kg)</h2>
+                        <h2 class="text-xs font-bold tracking-widest text-slate-400 uppercase">🏆 總進化進度 (目標 73.0 kg)</h2>
                         <span id="progress-percent" class="text-xs font-mono font-bold text-emerald-400">0%</span>
                     </div>
                     <div class="w-full bg-slate-950 rounded-full h-4 p-0.5 border border-slate-800 shadow-inner">
@@ -71,23 +71,23 @@
             </div>
 
             <div class="xl:col-span-2 bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-xl">
-                <h2 class="text-xs font-black tracking-widest text-slate-400 uppercase mb-3">🔥 PERSONAL RECORDS (歷史最高相對與絕對指標)</h2>
+                <h2 class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-3">🔥 PERSONAL RECORDS (歷史最高相對與絕對指標)</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
                     <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
                         <span class="text-[10px] text-slate-500 block">最低體重</span>
-                        <span id="pr-weight" class="text-sm font-black text-emerald-400">-- kg</span>
+                        <span id="pr-weight" class="text-sm font-bold text-emerald-400">-- kg</span>
                     </div>
                     <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
                         <span class="text-[10px] text-slate-500 block">最低內臟脂肪</span>
-                        <span id="pr-visceral" class="text-sm font-black text-emerald-400">--</span>
+                        <span id="pr-visceral" class="text-sm font-bold text-emerald-400">--</span>
                     </div>
                     <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
-                        <span class="text-[10px] text-slate-400 block block">最高相對拉力</span>
-                        <span id="pr-pullups" class="text-xs font-black text-cyan-400">-- 次/kg</span>
+                        <span class="text-[10px] text-slate-400 block">最高相對拉力</span>
+                        <span id="pr-pullups" class="text-xs font-bold text-cyan-400">-- 次/kg</span>
                     </div>
                     <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
-                        <span class="text-[10px] text-slate-400 block block">最高相對推力</span>
-                        <span id="pr-pushups" class="text-xs font-black text-cyan-400">-- 次/kg</span>
+                        <span class="text-[10px] text-slate-400 block">最高相對推力</span>
+                        <span id="pr-pushups" class="text-xs font-bold text-cyan-400">-- 次/kg</span>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
 
             <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-xl flex flex-col justify-between">
                 <div>
-                    <h2 class="text-xs font-black tracking-widest text-slate-400 uppercase mb-1">💧 每日水分代謝追蹤</h2>
+                    <h2 class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-1">💧 每日水分代謝追蹤</h2>
                     <div class="flex justify-between items-baseline mt-1">
                         <span id="water-display" class="text-2xl font-mono font-black text-sky-400">0 ml</span>
                         <span class="text-[10px] text-slate-500 font-mono">目標: 2500 ml</span>
@@ -191,7 +191,7 @@
                         <input type="text" id="input-outdoor" placeholder="慢跑5k / 獅子山" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-white focus:outline-none focus:border-emerald-500">
                     </div>
                 </div>
-                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs py-2 rounded-lg transition-colors cursor-pointer uppercase tracking-wider">
+                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs py-2 rounded-lg transition-colors cursor-pointer uppercase tracking-wider">
                     ⚡ 寫入今日數據並同步極限相對力量
                 </button>
             </form>
@@ -223,7 +223,7 @@
             <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-xl flex flex-col justify-between">
                 <div>
                     <div class="flex justify-between items-center mb-1">
-                        <h2 class="text-xs font-black tracking-widest text-slate-400 uppercase">⏱️ 戰術計時器</h2>
+                        <h2 class="text-xs font-bold tracking-widest text-slate-400 uppercase">⏱️ 戰術計時器</h2>
                         <span id="timer-status-badge" class="text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider bg-slate-950 text-slate-400">標準模式</span>
                     </div>
                     <div id="timer-display" class="text-3xl font-mono font-black text-center text-cyan-400 bg-slate-950 py-3 rounded-xl border border-slate-800 tracking-wider">
@@ -272,9 +272,9 @@
             { id: 1, date: '2026-05-14', weight: 83.6, visceral: 6.0, pullups: 1, pushups: 15, climb: 'V1', outdoor: '轉型計畫基準報告', isBase: true }
         ];
 
-        let trackingData = JSON.parse(localStorage.getItem('apexTrackingDataV60')) || initialData;
-        let habitsState = JSON.parse(localStorage.getItem('apexHabitsStateV60')) || { lastCompletedDate: '', currentStreak: 0, items: {} };
-        let waterCount = JSON.parse(localStorage.getItem('apexWaterCountV60')) || { date: '', amount: 0 };
+        let trackingData = JSON.parse(localStorage.getItem('apexTrackingDataV61')) || initialData;
+        let habitsState = JSON.parse(localStorage.getItem('apexHabitsStateV61')) || { lastCompletedDate: '', currentStreak: 0, items: {} };
+        let waterCount = JSON.parse(localStorage.getItem('apexWaterCountV61')) || { date: '', amount: 0 };
         
         let weightChart = null;
         let chartFilterDays = 0; // 0意為全部
@@ -282,7 +282,7 @@
         let timerInterval = null;
         let timerSeconds = 120;
         let timerRunning = false;
-        let timerMode = 'standard'; // standard | climb_up (攀爬中) | climb_down (休息中)
+        let timerMode = 'standard'; // standard | climb_up | climb_down
 
         const todayStr = new Date().toISOString().split('T')[0];
         const yesterdayStr = new Date(Date.now() - 86400000).toISOString().split('T')[0];
@@ -291,12 +291,12 @@
             habitsState.currentStreak = 0;
         }
 
-        if (localStorage.getItem('lastOpenedDateV60') !== todayStr) {
+        if (localStorage.getItem('lastOpenedDateV61') !== todayStr) {
             habitsState.items = { 'habit-stairs': false, 'habit-sugar': false, 'habit-plate': false };
             waterCount = { date: todayStr, amount: 0 };
-            localStorage.setItem('lastOpenedDateV60', todayStr);
-            localStorage.setItem('apexHabitsStateV60', JSON.stringify(habitsState));
-            localStorage.setItem('apexWaterCountV60', JSON.stringify(waterCount));
+            localStorage.setItem('lastOpenedDateV61', todayStr);
+            localStorage.setItem('apexHabitsStateV61', JSON.stringify(habitsState));
+            localStorage.setItem('apexWaterCountV61', JSON.stringify(waterCount));
         }
 
         const form = document.getElementById('metrics-form');
@@ -322,7 +322,7 @@
                     const parsed = JSON.parse(e.target.result);
                     if (Array.isArray(parsed)) {
                         trackingData = parsed;
-                        localStorage.setItem('apexTrackingDataV60', JSON.stringify(trackingData));
+                        localStorage.setItem('apexTrackingDataV61', JSON.stringify(trackingData));
                         renderAll();
                         alert('💪 數據備份成功匯入！');
                     } else {
@@ -338,12 +338,12 @@
         // 水量管理
         function addWater(ml) {
             waterCount.amount += ml; waterCount.date = todayStr;
-            localStorage.setItem('apexWaterCountV50', JSON.stringify(waterCount));
+            localStorage.setItem('apexWaterCountV61', JSON.stringify(waterCount));
             document.getElementById('water-display').innerText = `${waterCount.amount} ml`;
         }
         function resetWater() {
             waterCount.amount = 0;
-            localStorage.setItem('apexWaterCountV50', JSON.stringify(waterCount));
+            localStorage.setItem('apexWaterCountV61', JSON.stringify(waterCount));
             document.getElementById('water-display').innerText = `0 ml`;
         }
         document.getElementById('water-display').innerText = `${waterCount.amount || 0} ml`;
@@ -357,7 +357,7 @@
             document.getElementById('current-weight-badge').innerText = `當前: ${latestWeight} kg`;
         }
 
-        // 計算 PR 並返回歷史最高相對拉力/推力
+        // 計算 PR
         function calculatePRs() {
             if (trackingData.length === 0) return { maxRelPull: 0, maxRelPush: 0 };
             const weights = trackingData.map(d => d.weight);
@@ -376,13 +376,13 @@
             return { maxRelPull, maxRelPush };
         }
 
-        // 圖表過濾控制
+        // 圖表過濾
         window.setChartFilter = function(days) {
             chartFilterDays = days;
             ['filter-7', 'filter-30', 'filter-0'].forEach(id => {
                 document.getElementById(id).className = "px-2 py-1 rounded transition-colors cursor-pointer text-slate-400";
             });
-            document.getElementById(`filter-${days}`).className = "px-2 py-1 rounded transition-colors cursor-pointer bg-emerald-500 text-slate-950 font-bold";
+            document.getElementById(`filter-${days}`).className = "px-2 py-1 rounded transition-colors cursor-pointer bg-emerald-500 text-slate-950 font-bold text-xs";
             updateChart();
         }
 
@@ -409,7 +409,7 @@
                     data: {
                         labels: labels,
                         datasets: [
-                            { label: '體重 (kg)', data: weights, borderColor: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.01)', borderWidth: 2, tension: 0.15, yAxisID: 'y' },
+                            { label: '體重 (kg)', data: weights, borderColor: '#10b981', backgroundColor: 'transparent', borderWidth: 2, tension: 0.15, yAxisID: 'y' },
                             { label: '內臟脂肪指數', data: viscerals, borderColor: '#f59e0b', backgroundColor: 'transparent', borderWidth: 2, borderDash: [4, 4], tension: 0.15, yAxisID: 'y1' }
                         ]
                     },
@@ -426,15 +426,14 @@
             }
         }
 
-        // 即時行內編輯更新
+        // 即時修改
         window.updateInlineField = function(id, field, value) {
             const numVal = parseFloat(value);
             if (isNaN(numVal) || numVal < 0) return;
             const record = trackingData.find(d => d.id === id);
             if (record) {
                 record[field] = numVal;
-                localStorage.setItem('apexTrackingDataV60', JSON.stringify(trackingData));
-                // 只更新圖表、PR、進度條，不用重新renderTable防止input焦點丟失
+                localStorage.setItem('apexTrackingDataV61', JSON.stringify(trackingData));
                 const sorted = [...trackingData].sort((a, b) => new Date(b.date) - new Date(a.date));
                 if(sorted.length > 0) updateProgressBar(sorted[0].weight);
                 updateChart();
@@ -442,7 +441,7 @@
             }
         }
 
-        // 渲染全幅數據日誌
+        // 歷史日誌渲染
         function renderTable() {
             tableBody.innerHTML = '';
             const sortedData = [...trackingData].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -462,17 +461,17 @@
                 tr.innerHTML = `
                     <td class="py-3 text-slate-400 font-mono">${item.date}</td>
                     <td class="py-2 font-bold text-emerald-400">
-                        <input type="number" step="0.1" value="${item.weight}" onchange="updateInlineField(${item.id}, 'weight', this.value)" class="w-16 bg-slate-950 border border-slate-800 rounded p-1 text-center font-bold text-emerald-400 focus:border-emerald-500 focus:outline-none"> kg
+                        <input type="number" step="0.1" value="${item.weight}" onchange="updateInlineField(${item.id}, 'weight', this.value)" class="w-16 bg-slate-950 border border-slate-800 rounded p-1 text-center font-bold text-emerald-400 focus:border-emerald-500 focus:outline-none text-xs"> kg
                         <span class="text-[9px] font-normal text-slate-500 block pl-1">${progressText}</span>
                     </td>
                     <td class="py-2">
-                        <input type="number" step="0.5" value="${item.visceral}" onchange="updateInlineField(${item.id}, 'visceral', this.value)" class="w-14 bg-slate-950 border border-slate-800 rounded p-1 text-center font-bold text-amber-400 focus:border-emerald-500 focus:outline-none">
+                        <input type="number" step="0.5" value="${item.visceral}" onchange="updateInlineField(${item.id}, 'visceral', this.value)" class="w-14 bg-slate-950 border border-slate-800 rounded p-1 text-center font-bold text-amber-400 focus:border-emerald-500 focus:outline-none text-xs">
                     </td>
                     <td class="py-2">
-                        <input type="number" value="${item.pullups || 0}" onchange="updateInlineField(${item.id}, 'pullups', this.value)" class="w-14 bg-slate-950 border border-slate-800 rounded p-1 text-center text-slate-200 focus:border-emerald-500 focus:outline-none"> 下
+                        <input type="number" value="${item.pullups || 0}" onchange="updateInlineField(${item.id}, 'pullups', this.value)" class="w-14 bg-slate-950 border border-slate-800 rounded p-1 text-center text-slate-200 focus:border-emerald-500 focus:outline-none text-xs"> 下
                     </td>
                     <td class="py-2">
-                        <input type="number" value="${item.pushups || 0}" onchange="updateInlineField(${item.id}, 'pushups', this.value)" class="w-14 bg-slate-950 border border-slate-800 rounded p-1 text-center text-slate-200 focus:border-emerald-500 focus:outline-none"> 下
+                        <input type="number" value="${item.pushups || 0}" onchange="updateInlineField(${item.id}, 'pushups', this.value)" class="w-14 bg-slate-950 border border-slate-800 rounded p-1 text-center text-slate-200 focus:border-emerald-500 focus:outline-none text-xs"> 下
                     </td>
                     <td class="py-3 text-cyan-400 font-mono font-medium">
                         拉: ${relPull} | 推: ${relPush}
@@ -490,12 +489,12 @@
         window.deleteRecord = function(id) {
             if(confirm('確定要刪除這筆紀錄嗎？')) {
                 trackingData = trackingData.filter(item => item.id !== id);
-                localStorage.setItem('apexTrackingDataV60', JSON.stringify(trackingData));
+                localStorage.setItem('apexTrackingDataV61', JSON.stringify(trackingData));
                 renderAll();
             }
         }
 
-        // 戰術計時器控制端
+        // 計時器控制
         function updateTimerDisplay() {
             const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
             const secs = String(timerSeconds % 60).padStart(2, '0');
@@ -557,10 +556,8 @@
             timerRunning = !timerRunning;
         }
 
-        // 彈窗
         window.closePRModal = function() { document.getElementById('pr-alert-modal').classList.add('hidden'); }
 
-        // 表單提交與相對力量歷史對比
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const weight = parseFloat(document.getElementById('input-weight').value);
@@ -570,17 +567,15 @@
             const climb = document.getElementById('input-climb').value;
             const outdoor = document.getElementById('input-outdoor').value;
 
-            // 獲取目前的歷史最佳紀錄
             const currentPRs = calculatePRs();
             const newPullRatio = pullups / weight;
             const newPushRatio = pushups / weight;
 
             trackingData.push({ id: Date.now(), date: todayStr, weight, visceral, pullups, pushups, climb, outdoor, isBase: false });
-            localStorage.setItem('apexTrackingDataV60', JSON.stringify(trackingData));
+            localStorage.setItem('apexTrackingDataV61', JSON.stringify(trackingData));
             form.reset();
             renderAll();
 
-            // 如果打破歷史最高相對力量系數，彈出高規格炫彩警報
             if (newPullRatio > currentPRs.maxRelPull || newPushRatio > currentPRs.maxRelPush) {
                 let text = "你的每公斤體重功率輸出已打破歷史最高紀錄！";
                 if(newPullRatio > currentPRs.maxRelPull) text += ` 目前相對拉力已飆升至極致的 ${newPullRatio.toFixed(2)} 次/kg！`;
@@ -593,10 +588,10 @@
         function checkStreak() {
             const allChecked = ['habit-stairs', 'habit-sugar', 'habit-plate'].every(id => document.getElementById(id).checked);
             if (allChecked) {
-                if (habitsState.lastCompletedDate !== todayStr) { habitsState.currentStreak += 1; habitsState.lastCompletedDate = todayStr; localStorage.setItem('apexHabitsStateV60', JSON.stringify(habitsState)); }
+                if (habitsState.lastCompletedDate !== todayStr) { habitsState.currentStreak += 1; habitsState.lastCompletedDate = todayStr; localStorage.setItem('apexHabitsStateV61', JSON.stringify(habitsState)); }
                 document.getElementById('habit-status').innerText = '🎉 今日防線全數達標！'; document.getElementById('habit-status').className = 'text-[11px] font-bold text-emerald-400';
             } else {
-                if (habitsState.lastCompletedDate === todayStr) { habitsState.currentStreak = Math.max(0, habitsState.currentStreak - 1); habitsState.lastCompletedDate = yesterdayStr; localStorage.setItem('apexHabitsStateV60', JSON.stringify(habitsState)); }
+                if (habitsState.lastCompletedDate === todayStr) { habitsState.currentStreak = Math.max(0, habitsState.currentStreak - 1); habitsState.lastCompletedDate = yesterdayStr; localStorage.setItem('apexHabitsStateV61', JSON.stringify(habitsState)); }
                 document.getElementById('habit-status').innerText = '未解鎖今日 Streak'; document.getElementById('habit-status').className = 'text-[11px] font-mono text-slate-500';
             }
             document.getElementById('streak-display').innerText = `🔥 ${habitsState.currentStreak} 天`;
@@ -604,7 +599,7 @@
 
         ['habit-stairs', 'habit-sugar', 'habit-plate'].forEach(id => {
             const checkbox = document.getElementById(id); checkbox.checked = habitsState.items[id] || false;
-            checkbox.addEventListener('change', (e) => { habitsState.items[id] = e.target.checked; localStorage.setItem('apexHabitsStateV60', JSON.stringify(habitsState)); checkStreak(); });
+            checkbox.addEventListener('change', (e) => { habitsState.items[id] = e.target.checked; localStorage.setItem('apexHabitsStateV61', JSON.stringify(habitsState)); checkStreak(); });
         });
 
         function renderAll() { renderTable(); updateChart(); checkStreak(); calculatePRs(); }
